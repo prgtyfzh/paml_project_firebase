@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "152836664679",
+    "project_id": "fir-paml",
+    "storage_bucket": "fir-paml.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:152836664679:android:d1a95c70e0058bfe7313c2",
+        "android_client_info": {
+          "package_name": "com.example.firebasepaml"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3rCSDYSZzdxUt2INcCAt4bkA3JD-ukMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
