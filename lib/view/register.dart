@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../controller/auth_controller.dart';
 import '../model/user_model.dart';
+import 'login.dart';
 
 class Register extends StatelessWidget {
   Register({super.key});
@@ -28,7 +29,7 @@ class Register extends StatelessWidget {
               TextFormField(
                 decoration: const InputDecoration(labelText: 'Name'),
                 onChanged: (value) {
-                  email = value;
+                  name = value;
                 },
               ),
               TextFormField(
@@ -63,10 +64,10 @@ class Register extends StatelessWidget {
                             actions: <Widget>[
                               TextButton(
                                 onPressed: () {
-                                  // Navigator.push(context,
-                                  //     MaterialPageRoute(builder: (context) {
-                                  //   return Login();
-                                  // }));
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return Login();
+                                  }));
                                   // Navigate to the next screen or perform any desired action
                                 },
                                 child: const Text('OK'),
