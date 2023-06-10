@@ -40,59 +40,60 @@ class _UpdateContactState extends State<UpdateContact> {
         title: const Text('Update Contact'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(20),
         child: Form(
           key: formkey,
           child: Column(
             children: [
               TextFormField(
-                onChanged: (value) {
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.person,
+                    color: Colors.deepPurple,
+                  ),
+                ),
+                onSaved: (value) {
                   newname = value;
                 },
                 initialValue: widget.name,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Nama harus diisi!';
-                  }
-                  return null;
-                },
               ),
               TextFormField(
-                onChanged: (value) {
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.phone,
+                    color: Colors.deepPurple,
+                  ),
+                ),
+                onSaved: (value) {
                   newphone = value;
                 },
                 initialValue: widget.phone,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Phone harus diisi!';
-                  }
-                  return null;
-                },
               ),
               TextFormField(
-                onChanged: (value) {
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.email,
+                    color: Colors.deepPurple,
+                  ),
+                ),
+                onSaved: (value) {
                   newemail = value;
                 },
                 initialValue: widget.email,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Email harus diisi!';
-                  }
-                  return null;
-                },
               ),
               TextFormField(
-                onChanged: (value) {
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.room,
+                    color: Colors.deepPurple,
+                  ),
+                ),
+                onSaved: (value) {
                   newaddress = value;
                 },
                 initialValue: widget.address,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Address harus diisi!';
-                  }
-                  return null;
-                },
               ),
+              const SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
                   if (formkey.currentState!.validate()) {
@@ -115,7 +116,16 @@ class _UpdateContactState extends State<UpdateContact> {
                     );
                   }
                 },
-                child: const Text('Save'),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  minimumSize: const Size(100, 50),
+                ),
+                child: const Text(
+                  'Save',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
             ],
           ),

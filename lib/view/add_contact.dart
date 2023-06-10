@@ -27,35 +27,60 @@ class _AddContactState extends State<AddContact> {
         title: const Text('Add Contact'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(20),
         child: Form(
           key: formkey,
           child: Column(
             children: [
               TextFormField(
-                decoration: const InputDecoration(hintText: 'Name'),
+                decoration: const InputDecoration(
+                  hintText: 'Name',
+                  prefixIcon: Icon(
+                    Icons.person,
+                    color: Colors.deepPurple,
+                  ),
+                ),
                 onChanged: (value) {
                   name = value;
                 },
               ),
               TextFormField(
-                decoration: const InputDecoration(hintText: 'Phone'),
+                decoration: const InputDecoration(
+                  hintText: 'Phone',
+                  prefixIcon: Icon(
+                    Icons.phone,
+                    color: Colors.deepPurple,
+                  ),
+                ),
                 onChanged: (value) {
                   phone = value;
                 },
               ),
               TextFormField(
-                decoration: const InputDecoration(hintText: 'Email'),
+                decoration: const InputDecoration(
+                  hintText: 'Email',
+                  prefixIcon: Icon(
+                    Icons.email,
+                    color: Colors.deepPurple,
+                  ),
+                ),
                 onChanged: (value) {
                   email = value;
                 },
               ),
               TextFormField(
-                decoration: const InputDecoration(hintText: 'Address'),
+                decoration: const InputDecoration(
+                  hintText: 'Address',
+                  prefixIcon: Icon(
+                    Icons.room,
+                    color: Colors.deepPurple,
+                  ),
+                ),
                 onChanged: (value) {
                   address = value;
                 },
               ),
+              const SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
                   if (formkey.currentState!.validate()) {
@@ -76,7 +101,16 @@ class _AddContactState extends State<AddContact> {
                     );
                   }
                 },
-                child: const Text('Add Contact'),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  minimumSize: const Size(100, 50),
+                ),
+                child: const Text(
+                  'Save',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
             ],
           ),

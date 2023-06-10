@@ -30,7 +30,7 @@ class _ContactState extends State<Contact> {
             const Text(
               'Contact List',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
             ),
