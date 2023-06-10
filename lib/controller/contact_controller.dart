@@ -28,15 +28,38 @@ class ContactController {
     await docRef.update(contactModel.toMap());
   }
 
-  Future<void> updateContact(String id, ContactModel ctmodel) async {
-    final ContactModel contactModel = ContactModel(
-      name: ctmodel.name,
-      phone: ctmodel.phone,
-      email: ctmodel.email,
-      address: ctmodel.address,
-    );
+  // Future<void> updateContact(ContactModel ctmodel) async {
+  //   var document = contactCollection.doc(ctmodel.id);
 
-    await contactCollection.doc(id).update(contactModel.toMap());
+  //   final ContactModel contactModel = ContactModel(
+  //       id: ctmodel.id,
+  //       name: ctmodel.name,
+  //       phone: ctmodel.phone,
+  //       email: ctmodel.email,
+  //       address: ctmodel.address);
+
+  //   await document.update(contactModel.toMap());
+  // }
+
+  Future<void> updateContact(ContactModel ctmodel) async {
+    final ContactModel contactModel = ContactModel(
+        name: ctmodel.name,
+        phone: ctmodel.phone,
+        email: ctmodel.email,
+        address: ctmodel.address,
+        id: ctmodel.id);
+
+    await contactCollection.doc(ctmodel.id).update(contactModel.toMap());
+
+    // final DocumentSnapshot documentSnapshot =
+    //     await contactCollection.doc(ctmodel.id).get();
+    // if (!documentSnapshot.exists) {
+    //   return;
+    // }
+
+    // final updateContact = contactModel.toMap();
+    // await contactCollection.doc(contactModel.id).update(updateContact);
+    // await getContact();
   }
 
   Future<void> removeContact(String id) async {

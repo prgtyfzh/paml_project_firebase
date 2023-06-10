@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 class UpdateContact extends StatefulWidget {
   const UpdateContact({
     Key? key,
+    this.id,
     this.name,
     this.phone,
     this.email,
     this.address,
   }) : super(key: key);
 
+  final String? id;
   final String? name;
   final String? phone;
   final String? email;
@@ -26,10 +28,10 @@ class _UpdateContactState extends State<UpdateContact> {
 
   final formkey = GlobalKey<FormState>();
 
-  String? name;
-  String? phone;
-  String? email;
-  String? address;
+  String? newname;
+  String? newphone;
+  String? newemail;
+  String? newaddress;
 
   @override
   Widget build(BuildContext context) {
@@ -44,41 +46,67 @@ class _UpdateContactState extends State<UpdateContact> {
           child: Column(
             children: [
               TextFormField(
-                decoration: const InputDecoration(hintText: 'Name'),
                 onChanged: (value) {
-                  name = value;
+                  newname = value;
+                },
+                initialValue: widget.name,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Nama harus diisi!';
+                  }
+                  return null;
                 },
               ),
               TextFormField(
-                decoration: const InputDecoration(hintText: 'Phone'),
                 onChanged: (value) {
-                  phone = value;
+                  newphone = value;
+                },
+                initialValue: widget.phone,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Phone harus diisi!';
+                  }
+                  return null;
                 },
               ),
               TextFormField(
-                decoration: const InputDecoration(hintText: 'Email'),
                 onChanged: (value) {
-                  email = value;
+                  newemail = value;
+                },
+                initialValue: widget.email,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Email harus diisi!';
+                  }
+                  return null;
                 },
               ),
               TextFormField(
-                decoration: const InputDecoration(hintText: 'Address'),
                 onChanged: (value) {
-                  address = value;
+                  newaddress = value;
+                },
+                initialValue: widget.address,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Address harus diisi!';
+                  }
+                  return null;
                 },
               ),
               ElevatedButton(
                 onPressed: () {
                   if (formkey.currentState!.validate()) {
+                    formkey.currentState!.save();
                     ContactModel cm = ContactModel(
-                      name: name!,
-                      phone: phone!,
-                      email: email!,
-                      address: address!,
+                      id: widget.id,
+                      name: newname!.toString(),
+                      phone: newphone!.toString(),
+                      email: newemail!.toString(),
+                      address: newaddress!.toString(),
                     );
-                    contactController.addContact(cm);
+                    contactController.updateContact(cm);
                     ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Contact Added')));
+                        const SnackBar(content: Text('Contact Changed')));
                     Navigator.push(
                       context,
                       MaterialPageRoute(

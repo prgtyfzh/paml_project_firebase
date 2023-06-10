@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebasepaml/controller/contact_controller.dart';
 import 'package:firebasepaml/view/add_contact.dart';
+import 'package:firebasepaml/view/update_contact.dart';
 import 'package:flutter/material.dart';
 
 class Contact extends StatefulWidget {
@@ -51,7 +52,20 @@ class _ContactState extends State<Contact> {
                       return Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: InkWell(
-                          onLongPress: () {},
+                          onLongPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => UpdateContact(
+                                  id: data[index]['id'],
+                                  name: data[index]['name'],
+                                  phone: data[index]['phone'],
+                                  email: data[index]['email'],
+                                  address: data[index]['address'],
+                                ),
+                              ),
+                            );
+                          },
                           child: Card(
                             elevation: 10,
                             child: ListTile(
